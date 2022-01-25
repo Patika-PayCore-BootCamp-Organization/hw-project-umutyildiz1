@@ -2,3 +2,4 @@
 
 ### In Design Documents Directory contains:
 * Entity Relationship Diagram 
+* Functional Requirements
