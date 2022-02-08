@@ -1,15 +1,14 @@
 package com.patikapaycoreumutyildiz.BookShop.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Table(name = "Book")
 @Data
@@ -33,5 +32,17 @@ public class Book {
     @Column(name = "price")
     @NotBlank(message = "Price can not be null")
     private int price;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "cartBookId.book")
+    private List<CartBook> cartBookList;
 
 }
