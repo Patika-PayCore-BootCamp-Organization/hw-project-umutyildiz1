@@ -42,6 +42,7 @@ public class BookServiceImpl implements BookService {
         Optional<Book> book = Optional.of(getBook(isbn));
         if(book.isPresent()){
             bookRepository.delete(book.get());
+            return true;
         }
         return false;
     }

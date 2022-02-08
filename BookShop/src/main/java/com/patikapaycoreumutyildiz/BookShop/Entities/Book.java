@@ -7,20 +7,21 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.List;
 
-@Table(name = "Book")
+@Table(name = "book")
 @Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Book {
+public class Book implements Serializable {
     @Id
-    @Column(name = "ISBN")
-    @NotBlank
-    @Size(min = 13,max = 13,message = "ISBN cannot be less than or more than 13 digits")
-    private int ISBN;
+    @Column(name = "isbn")
+    @NotNull(message = "Isbn can not be null")
+    private Integer isbn;
 
     @Column(name = "author_name")
     private String authorName;
@@ -30,7 +31,7 @@ public class Book {
     private String title;
 
     @Column(name = "price")
-    @NotBlank(message = "Price can not be null")
+    @NotNull(message = "Price can not be null")
     private int price;
 
     @ManyToOne

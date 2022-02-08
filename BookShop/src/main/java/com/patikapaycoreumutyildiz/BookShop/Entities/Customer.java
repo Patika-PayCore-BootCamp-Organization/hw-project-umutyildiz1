@@ -41,6 +41,6 @@ public class Customer {
     private List<Book> books;
 
     @JsonIgnore
-    @OneToMany
+    @OneToMany(mappedBy = "customer")
     private List<Cart> carts;
 }
