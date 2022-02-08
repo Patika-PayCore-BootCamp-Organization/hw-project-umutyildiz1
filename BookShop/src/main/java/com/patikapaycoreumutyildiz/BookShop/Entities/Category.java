@@ -1,6 +1,7 @@
 package com.patikapaycoreumutyildiz.BookShop.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,18 +14,18 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "Category")
+@Table(name = "category")
+@JsonIgnoreProperties({"hibernateLazyInitiliazer","handler","books"})
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
-    @Column(name = "name")
+    @Column(name = "category_name")
     @NotBlank(message = "category name can not be blank or null")
-    private int name;
+    private String categoryName;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "category")
     private List<Book> books;
 }
