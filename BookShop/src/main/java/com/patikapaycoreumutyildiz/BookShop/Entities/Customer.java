@@ -1,11 +1,13 @@
 package com.patikapaycoreumutyildiz.BookShop.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 @Table(name = "Customer")
 @NoArgsConstructor
@@ -33,4 +35,12 @@ public class Customer {
     @Column(name = "email")
     @NotBlank(message = "Email can not be blank or null")
     private String email;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "customer")
+    private List<Book> books;
+
+    @JsonIgnore
+    @OneToMany
+    private List<Cart> carts;
 }
