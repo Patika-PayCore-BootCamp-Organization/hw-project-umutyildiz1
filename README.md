@@ -8,7 +8,7 @@
 ### Endpoints
 
 * /api/book/{ create, update, delete, all, {id} }
-* /api/cart-book/{ create, update, delete, all, {id} }
+* /api/cart-book/{ create, update, delete, all, get }
 * /api/cart/{ create, update, delete, all, {id} }
 * /api/category/{ create, update, delete, all, {id} }
 * /api/customer/{ create, update, delete, all, {id} }
